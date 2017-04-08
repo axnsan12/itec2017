@@ -24,8 +24,8 @@ public class RouteUtils {
 			throw new IllegalArgumentException("locations out of order");
 		}
 
-		boolean verySlow = distance / elapsedSeconds < 0.7; // meters per second
-		boolean close = distance < 50; // meters
-		return verySlow;
+		boolean verySlow = distance / elapsedSeconds < 0.5; // meters per second
+		boolean close = distance < 20; // meters
+		return verySlow || close;
 	}
 }
