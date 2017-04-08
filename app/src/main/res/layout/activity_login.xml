@@ -1,32 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
+	android:orientation="vertical"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
+	android:background="@color/colorPrimary"
+	android:gravity="center"
 	tools:context="tm.itec.routemyway.LoginActivity">
 
-	<android.support.design.widget.AppBarLayout
+
+	<View
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1"/>
+
+	<ImageView
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:theme="@style/AppTheme.AppBarOverlay">
+		android:src="@drawable/title"
+		tools:ignore="ContentDescription"/>
 
-		<android.support.v7.widget.Toolbar
-			android:id="@+id/toolbar"
-			android:layout_width="match_parent"
-			android:layout_height="?attr/actionBarSize"
-			android:background="?attr/colorPrimary"
-			app:popupTheme="@style/AppTheme.PopupOverlay"/>
-
-	</android.support.design.widget.AppBarLayout>
+	<View
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1"/>
 
 	<RelativeLayout
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
+		android:layout_height="wrap_content"
 		android:layout_marginLeft="@dimen/activity_horizontal_margin"
 		android:layout_marginRight="@dimen/activity_horizontal_margin"
-		android:padding="@dimen/login_activity_padding">
+		android:padding="@dimen/login_activity_padding"
+		android:layout_marginBottom="32dp">
 
 		<com.google.android.gms.common.SignInButton
 			android:id="@+id/sign_in_button"
@@ -37,4 +43,5 @@
 
 	</RelativeLayout>
 
-</android.support.design.widget.CoordinatorLayout>
+
+</LinearLayout>

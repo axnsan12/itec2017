@@ -39,25 +39,18 @@
 		</activity>
 		<activity
 			android:name=".LoginActivity"
-			android:label="@string/title_activity_login"
+			android:icon="@mipmap/ic_launcher">
 			android:theme="@style/AppTheme.NoActionBar">
 			<intent-filter>
-				<action android:name="android.intent.action.MAIN"/>
-            </intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
         </activity>
        <activity
             android:name=".TodayActivity"
             android:label="@string/title_activity_today"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name=".SplashActivity"
-            android:icon="@mipmap/ic_launcher">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".SpeedInfoActivity"
             android:label="@string/title_activity_speed_info"

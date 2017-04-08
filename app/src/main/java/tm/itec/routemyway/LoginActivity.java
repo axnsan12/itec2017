@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -36,21 +37,8 @@ public class LoginActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
-		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-		setSupportActionBar(toolbar);
-
-//		SignInButton signInButton = (SignInButton) this.findViewById(R.id.sign_in_button);
-//
-//		// Find the TextView that is inside of the SignInButton and set its text
-//		for (int i = 0; i < signInButton.getChildCount(); i++) {
-//			View v = signInButton.getChildAt(i);
-//
-//			if (v instanceof TextView) {
-//				TextView tv = (TextView) v;
-//				tv.setPadding(0, 0, 20, 0);
-//				return;
-//			}
-//		}
+//		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//		setSupportActionBar(toolbar);
 
 		// Configure sign-in to request the user's ID, email address, and basic
 		// profile. ID and basic profile are included in DEFAULT_SIGN_IN.
@@ -114,7 +102,9 @@ public class LoginActivity extends AppCompatActivity {
 					@Override
 					public void onSuccess(Response<Session> response) {
 						Log.i(TAG, "Backend authentication success: " + response.body().token);
-						Intent intent = new Intent(LoginActivity.this, MapsActivity.class);
+//						Intent intent = new Intent(LoginActivity.this, MapsActivity.class);
+//						startActivity(intent);
+						Intent intent = new Intent(LoginActivity.this, TodayActivity.class);
 						startActivity(intent);
 					}
 
