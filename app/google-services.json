@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1079439277366",
+    "project_id": "firebase-route-my-way"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1079439277366:android:90d8ea0755353f1c",
+        "android_client_info": {
+          "package_name": "tm.itec.routemyway"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1079439277366-1h6iqgbsbarooaduafnf8pf5gf82t7h0.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "1079439277366-nrb4v40jbmgismg5uf01tc37c1b1gjv5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "tm.itec.routemyway",
+            "certificate_hash": "a76ae11fae70252b85619aa00eefdee46b6b38d8"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZIQN-zW18240cNlJmUawz8BGLV5JIZ9g"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
