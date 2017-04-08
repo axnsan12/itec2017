@@ -1,0 +1,16 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="today_stat_icon_margin">50dp</dimen>
+    <dimen name="today_card_space">12dp</dimen>
+    <dimen name="today_stat_text_size">45sp</dimen>
+    <dimen name="today_divider_height">0.5dp</dimen>
+    <dimen name="today_stat_title_size">24sp</dimen>
+    <dimen name="dropdown">40dp</dimen>
+    <dimen name="best_speed_margin">78dp</dimen>
+    <dimen name="best_speed_margin_r">62dp</dimen>
+    <dimen name="best_speed_margin_l">16dp</dimen>
+    <dimen name="best_speed_date">18sp</dimen>
+    <dimen name="speed_stats">20sp</dimen>
+    <dimen name="speed_stats_size">24sp</dimen>
+    <dimen name="most_active_day_date">28sp</dimen>
+</resources>

@@ -1,4 +1,14 @@
 <resources>
-	<string name="app_name">Route My Way</string>
-	<string name="title_activity_maps">Map</string>
+    <string name="app_name">Route My Way</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_today">Today\'s statistics</string>
+    <string name="average_speed">Average speed</string>
+    <string name="more_info">MORE INFO</string>
+    <string name="average_speed_text">Average speed</string>
+    <string name="current_pos">Current position</string>
+    <string name="most_active_hour">Most active hour</string>
+    <string name="title_activity_speed_info">Speed statistics</string>
+    <string name="best_speed">Highest speed</string>
+    <string name="lowest_speed">Lowest speed</string>
+    <string name="most_active_day">Most active day</string>
 </resources>
