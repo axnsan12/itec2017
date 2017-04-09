@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.AsyncQueryHandler;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
 import android.database.ContentObserver;
 import android.database.Cursor;
 import android.graphics.Color;
@@ -68,6 +69,9 @@ public class RouteMapFragment extends SupportMapFragment implements OnMapReadyCa
 		mLocationUpdater = new LocationQueryHandler(this);
 		requestPositionUpdate();
 		mLocationObserver = new LocationObserver(new Handler(Looper.getMainLooper()));
+
+		Intent intent = new Intent(activity, LocationRecorderService.class);
+		activity.startService(intent);
 	}
 
 	@Override

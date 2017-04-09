@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import static tm.itec.routemyway.LoginActivity.KEY_GOOGLE_EMAIL;
+import static tm.itec.routemyway.LoginActivity.KEY_GOOGLE_ID_TOKEN;
 import static tm.itec.routemyway.LoginActivity.KEY_GOOGLE_NAME;
 import static tm.itec.routemyway.LoginActivity.KEY_GOOGLE_PICTURE_URL;
 
@@ -67,6 +68,19 @@ public class TodayActivity extends AppCompatActivity {
         }
         userName.setText(googleName);
         emailAddress.setText(googleEmail);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        final SharedPreferences sharedPrefs = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        String googleIdToken = sharedPrefs.getString(KEY_GOOGLE_ID_TOKEN, null);
+        if (googleIdToken == null) {
+            Intent intent = new Intent(TodayActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
     }
 }
 

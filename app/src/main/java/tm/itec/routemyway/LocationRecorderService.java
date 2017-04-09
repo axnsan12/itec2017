@@ -42,6 +42,7 @@ public class LocationRecorderService extends Service {
 
 	private GoogleApiClient mGoogleApiClient;
 	private LocationRequest mLocationRequest;
+	private boolean mActivated;
 
 	private Location mLastLocation;
 	private Date mLocationUpdateTime;
@@ -59,6 +60,7 @@ public class LocationRecorderService extends Service {
 		@Override
 		public void onConnected(@Nullable Bundle bundle) {
 			try {
+				mActivated = true;
 				mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
 				if (mLastLocation != null) {
 					Log.i(TAG, "Location update (initial): " + mLastLocation);
@@ -119,27 +121,6 @@ public class LocationRecorderService extends Service {
 
 	@Override
 	public void onCreate() {
-		// Create an instance of GoogleAPIClient.
-		if (mGoogleApiClient == null) {
-			mGoogleApiClient = new GoogleApiClient.Builder(this)
-					.addConnectionCallbacks(mConnectionHandler)
-					.addOnConnectionFailedListener(new GoogleApiClient.OnConnectionFailedListener() {
-						@Override
-						public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
-						}
-					})
-					.addApi(LocationServices.API)
-					.build();
-		}
-
-		mLocationRequest = buildLocationRequest();
-		Retrofit retrofit = new Retrofit.Builder()
-				.baseUrl("http://192.168.43.197:5000/")
-				.addConverterFactory(GsonConverterFactory.create())
-				.build();
-
-		mBackendService = retrofit.create(BackendService.class);
 	}
 
 	@Override
@@ -150,7 +131,30 @@ public class LocationRecorderService extends Service {
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		super.onStartCommand(intent, flags, startId);
-		mGoogleApiClient.connect();
+		if (!mActivated) {
+			// Create an instance of GoogleAPIClient.
+			if (mGoogleApiClient == null) {
+				mGoogleApiClient = new GoogleApiClient.Builder(this)
+						.addConnectionCallbacks(mConnectionHandler)
+						.addOnConnectionFailedListener(new GoogleApiClient.OnConnectionFailedListener() {
+							@Override
+							public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+							}
+						})
+						.addApi(LocationServices.API)
+						.build();
+			}
+
+			mLocationRequest = buildLocationRequest();
+			Retrofit retrofit = new Retrofit.Builder()
+					.baseUrl("http://192.168.43.197:5000/")
+					.addConverterFactory(GsonConverterFactory.create())
+					.build();
+
+			mBackendService = retrofit.create(BackendService.class);
+			mGoogleApiClient.connect();
+		}
 		return START_STICKY;
 	}
 
