@@ -44,10 +44,12 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginTop="16dp"
                         android:text="@string/current_pos"
                         android:textColor="@color/colorPrimary"
-                        android:textSize="@dimen/today_stat_title_size"
-                        android:textStyle="bold"/>
+                        android:textSize="@dimen/subheading" />
 
                     <FrameLayout
                         android:id="@+id/mapContainer"
@@ -66,7 +68,7 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/today_divider_height"
-                        android:background="@color/dividerColor"/>
+                        android:background="@color/dividerColor" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -81,7 +83,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/more_info"
                             android:textColor="@color/colorAccent"
-                            android:textSize="18sp"/>
+                            android:textSize="@dimen/more_info_text_size" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -111,8 +113,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="@dimen/today_stat_icon_margin"
                             android:layout_marginRight="@dimen/today_stat_icon_margin"
-                            android:contentDescription="@string/average_speed"
-                            android:src="@drawable/speed_meter"/>
+                            android:contentDescription="@string/average_speed_text"
+                            android:src="@drawable/speed_meter" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -126,8 +128,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/average_speed_text"
                                 android:textColor="@color/colorPrimary"
-                                android:textSize="@dimen/today_stat_title_size"
-                                android:textStyle="bold"/>
+                                android:textSize="@dimen/subheading" />
 
                             <TextView
                                 android:id="@+id/speed"
@@ -135,14 +136,14 @@
                                 android:layout_height="wrap_content"
                                 android:text="4km/h"
                                 android:textColor="@color/colorPrimary"
-                                android:textSize="@dimen/today_stat_text_size"/>
+                                android:textSize="@dimen/stat_text_size" />
                         </LinearLayout>
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/today_divider_height"
-                        android:background="@color/dividerColor"/>
+                        android:background="@color/dividerColor" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -157,7 +158,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/more_info"
                             android:textColor="@color/colorAccent"
-                            android:textSize="18sp"/>
+                            android:textSize="@dimen/more_info_text_size" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -185,10 +186,10 @@
                             android:id="@+id/clock"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="@dimen/today_stat_icon_margin"
                             android:layout_marginEnd="@dimen/today_stat_icon_margin"
-                            android:contentDescription="@string/average_speed"
-                            android:src="@drawable/clock"/>
+                            android:layout_marginRight="@dimen/today_stat_icon_margin"
+                            android:contentDescription="@string/average_speed_text"
+                            android:src="@drawable/clock" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -202,8 +203,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/most_active_hour"
                                 android:textColor="@color/colorPrimary"
-                                android:textSize="@dimen/today_stat_title_size"
-                                android:textStyle="bold"/>
+                                android:textSize="@dimen/subheading" />
 
                             <TextView
                                 android:id="@+id/hour"
@@ -211,14 +211,14 @@
                                 android:layout_height="wrap_content"
                                 android:text="11am"
                                 android:textColor="@color/colorPrimary"
-                                android:textSize="@dimen/today_stat_text_size"/>
+                                android:textSize="@dimen/stat_text_size" />
                         </LinearLayout>
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/today_divider_height"
-                        android:background="@color/dividerColor"/>
+                        android:background="@color/dividerColor" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -233,7 +233,87 @@
                             android:layout_height="wrap_content"
                             android:text="@string/more_info"
                             android:textColor="@color/colorAccent"
-                            android:textSize="18sp"/>
+                            android:textSize="@dimen/more_info_text_size" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/today_card_space">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/today_stat_icon_margin"
+                            android:layout_marginRight="@dimen/today_stat_icon_margin"
+                            android:contentDescription="@string/average_speed_text"
+                            android:src="@drawable/clock" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="start"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/profile"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/subheading" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Username"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/stat_text_size" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Mail"
+                                android:textStyle="italic"
+                                android:textColor="@color/colorAccent"
+                                android:textSize="@dimen/date_size" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/today_divider_height"
+                        android:background="@color/dividerColor" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:id="@+id/btnProfileInfo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/more_info"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="@dimen/more_info_text_size" />
                     </LinearLayout>
 
                 </LinearLayout>

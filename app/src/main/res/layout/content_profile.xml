@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="tm.itec.routemyway.ProfileActivity"
+    tools:showIn="@layout/activity_profile">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/today_stat_icon_margin"
+                android:layout_marginRight="@dimen/today_stat_icon_margin"
+                android:contentDescription="@string/average_speed_text"
+                android:src="@drawable/clock" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Username"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/stat_text_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mail"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/date_size"
+                    android:textStyle="italic" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/today_divider_height"
+            android:background="@color/dividerColor" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="12dp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="@dimen/profile_img_size"
+                android:layout_height="@dimen/profile_img_size"
+                android:layout_marginEnd="@dimen/today_stat_icon_margin"
+                android:layout_marginRight="@dimen/today_stat_icon_margin"
+                android:contentDescription="@string/average_speed_text"
+                android:scaleType="centerInside"
+                android:src="@drawable/letter" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/feedback"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/subheading" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/today_divider_height"
+                    android:background="@color/dividerColor" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="12dp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="@dimen/profile_img_size"
+                android:layout_height="@dimen/profile_img_size"
+                android:layout_marginEnd="@dimen/today_stat_icon_margin"
+                android:layout_marginRight="@dimen/today_stat_icon_margin"
+                android:contentDescription="@string/average_speed_text"
+                android:scaleType="centerInside"
+                android:src="@drawable/question_mark" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/help"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/subheading" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/today_divider_height"
+                    android:background="@color/dividerColor" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="12dp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="@dimen/profile_img_size"
+                android:layout_height="@dimen/profile_img_size"
+                android:layout_marginEnd="@dimen/today_stat_icon_margin"
+                android:layout_marginRight="@dimen/today_stat_icon_margin"
+                android:contentDescription="@string/average_speed_text"
+                android:scaleType="centerInside"
+                android:src="@drawable/sign_out" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/sign_out"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/subheading"
+                    android:gravity="center_vertical"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/today_divider_height"
+                    android:background="@color/dividerColor"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>
+

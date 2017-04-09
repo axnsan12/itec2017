@@ -35,6 +35,16 @@ public class TodayActivity extends AppCompatActivity {
             }
         });
 
+        View positionProfileButton = findViewById(R.id.btnProfileInfo);
+        positionProfileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TodayActivity.this, ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+}
 
 //        PieChart chart = (PieChart) findViewById(R.id.chart);
 //        PieData data = new PieData();
@@ -46,6 +56,4 @@ public class TodayActivity extends AppCompatActivity {
 //        pieDataSet.setColors(new int[] { R.color.red, R.color.green }, this);
 //        data.addDataSet(pieDataSet);
 //        chart.setData(data);
-    }
 
-}

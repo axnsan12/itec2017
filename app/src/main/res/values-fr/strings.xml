@@ -1,0 +1,32 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Route My Way</string>
+    <string name="title_activity_maps">Carte</string>
+    <string name="title_activity_today">Aujourd\'hui</string>
+    <string name="average_speed_text">Vitesse moyene</string>
+    <string name="more_info">PLUS</string>
+    <string name="current_pos">Position actuelle</string>
+    <string name="most_active_hour">L\'heure plus active</string>
+    <string name="title_activity_speed_info">Vitesse</string>
+    <string name="best_speed">Vitesse la plus élevée</string>
+    <string name="lowest_speed">Vitesse la plus basse</string>
+    <string name="most_active_day">Jour le plus actif</string>
+    <string name="title_activity_login">Connexion</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Mot de passe (optionnel)</string>
+    <string name="action_sign_in">Connexion ou inscription</string>
+    <string name="action_sign_in_short">Se connecter</string>
+    <string name="error_invalid_email">Cette adresse d\'email est invalide</string>
+    <string name="error_invalid_password">Ce mot de passe est trop court</string>
+    <string name="error_incorrect_password">Ce mot de passe est incorrect</string>
+    <string name="error_field_required">Ce champ est requis</string>
+    <string name="permission_rationale">"Les autorisations de contacts sont nécessaires pour fournir un courrier électronique complété"
+	</string>
+    <string name="server_client_id" tools:ignore="TypographyDashes">1079439277366-1h6iqgbsbarooaduafnf8pf5gf82t7h0.apps.googleusercontent.com</string>
+    <string name="preference_file_key">tm.itec.routemyway.PREFERENCES</string>
+    <string name="profile">Profil</string>
+    <string name="title_activity_profile">Profil</string>
+    <string name="feedback">Envoyez-nous vos commentaires</string>
+    <string name="help">Aide</string>
+</resources>

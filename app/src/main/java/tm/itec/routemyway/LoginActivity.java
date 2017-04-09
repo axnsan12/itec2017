@@ -275,12 +275,16 @@ public class LoginActivity extends AppCompatActivity {
 			public void onFailure(Response<Session> response) {
 				Log.i(TAG, "Backend authentication rejected: " + response.errorBody());
 				mGoogleSignInButton.setEnabled(true);
+				mLoggedIn = true;
+				nextActivity();
 			}
 
 			@Override
 			public void onFailure(Call<Session> call, Throwable t) {
 				Log.i(TAG, "Backend authentication request failed: " + t.toString());
 				mGoogleSignInButton.setEnabled(true);
+				mLoggedIn = true;
+				nextActivity();
 			}
 		});
 	}

@@ -1,5 +1,6 @@
 package tm.itec.routemyway;
 
+import android.app.Activity;
 import android.content.AsyncQueryHandler;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -58,6 +59,11 @@ public class RouteMapFragment extends SupportMapFragment implements OnMapReadyCa
 	@Override
 	public void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
+	}
+
+	@Override
+	public void onAttach(Activity activity) {
+		super.onAttach(activity);
 		getMapAsync(this);
 		mLocationUpdater = new LocationQueryHandler(this);
 		requestPositionUpdate();
