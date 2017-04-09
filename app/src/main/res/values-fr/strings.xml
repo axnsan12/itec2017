@@ -29,4 +29,6 @@
     <string name="title_activity_profile">Profil</string>
     <string name="feedback">Envoyez-nous vos commentaires</string>
     <string name="help">Aide</string>
+    <string name="sign_out">Déconnexion</string>
+    <string name="current_speed">Vitesse actuelle</string>
 </resources>

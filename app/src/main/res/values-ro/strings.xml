@@ -29,4 +29,6 @@
     <string name="title_activity_profile">Profil</string>
     <string name="feedback">Trimiteți-ne feedback</string>
     <string name="help">Ajutor</string>
+    <string name="sign_out">Deconectare</string>
+    <string name="current_speed">Viteza curentă</string>
 </resources>

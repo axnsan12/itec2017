@@ -18,15 +18,58 @@
 		android:layout_height="64dp"
 		android:orientation="vertical"
 		android:layout_gravity="center_vertical"
-		android:background="@color/colorAccent"
+		android:background="@color/colorPrimary"
 		android:padding="8dp">
 
 		<TextView
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_marginLeft="64dp"
-			android:text="Heading heading text text"
-			android:textSize="18sp"/>
+			android:layout_marginTop="10dp"
+			android:layout_marginLeft="8dp"
+			android:text="Timișoara, România"
+			android:textColor="@color/colorAccent"
+			android:textSize="@dimen/stat_text_size"/>
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center_vertical"
+		android:orientation="horizontal"
+		android:padding="16dp"
+		android:layout_marginTop="16dp">
+
+		<ImageView
+			android:id="@+id/speedIconAvg"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginEnd="@dimen/today_stat_icon_margin"
+			android:layout_marginRight="@dimen/today_stat_icon_margin"
+			android:contentDescription="@string/average_speed_text"
+			android:src="@drawable/speed_meter" />
+
+		<LinearLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:gravity="start"
+			android:orientation="vertical">
+
+			<TextView
+				android:id="@+id/dummyText"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/current_speed"
+				android:textColor="@color/colorPrimary"
+				android:textSize="@dimen/subheading" />
+
+			<TextView
+				android:id="@+id/speed"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="2km/h"
+				android:textColor="@color/colorPrimary"
+				android:textSize="@dimen/stat_text_size" />
+		</LinearLayout>
 	</LinearLayout>
 
 	<ScrollView

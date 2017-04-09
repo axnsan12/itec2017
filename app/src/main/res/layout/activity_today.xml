@@ -47,6 +47,7 @@
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
                         android:layout_marginTop="16dp"
+                        android:layout_marginBottom="8dp"
                         android:text="@string/current_pos"
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/subheading" />

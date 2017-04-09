@@ -31,4 +31,5 @@
     <string name="feedback">Send us feedback</string>
     <string name="help">Help</string>
     <string name="sign_out">Sign out</string>
+    <string name="current_speed">Current speed</string>
 </resources>
