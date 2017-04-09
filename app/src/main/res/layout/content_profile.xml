@@ -20,9 +20,10 @@
             android:orientation="horizontal"
             android:padding="16dp">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profilePicture"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
                 android:layout_marginEnd="@dimen/today_stat_icon_margin"
                 android:layout_marginRight="@dimen/today_stat_icon_margin"
                 android:contentDescription="@string/average_speed_text"
@@ -34,16 +35,16 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/userName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Username"
                     android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/stat_text_size" />
 
                 <TextView
+                    android:id="@+id/emailAddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Mail"
                     android:textColor="@color/colorAccent"
                     android:textSize="@dimen/date_size"
                     android:textStyle="italic" />

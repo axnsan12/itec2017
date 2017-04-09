@@ -45,6 +45,9 @@ public class LoginActivity extends AppCompatActivity {
 	private static final String TAG = "LoginActivity";
 
 	public static final String KEY_GOOGLE_ID_TOKEN = "googleIdToken";
+	public static final String KEY_GOOGLE_EMAIL = "googleEmail";
+	public static final String KEY_GOOGLE_NAME = "googleName";
+	public static final String KEY_GOOGLE_PICTURE_URL = "googlePictureUrl";
 	public static final String KEY_BACKEND_TOKEN = "backendToken";
 	public static final String KEY_USER_ID = "userId";
 
@@ -299,6 +302,11 @@ public class LoginActivity extends AppCompatActivity {
 
 				SharedPreferences.Editor editor = mSharedPrefs.edit();
 				editor.putString(KEY_GOOGLE_ID_TOKEN, acct.getIdToken());
+				if (acct.getPhotoUrl() != null) {
+					editor.putString(KEY_GOOGLE_PICTURE_URL, acct.getPhotoUrl().toString());
+				}
+				editor.putString(KEY_GOOGLE_EMAIL, acct.getEmail());
+				editor.putString(KEY_GOOGLE_NAME, acct.getDisplayName());
 				editor.apply();
 
 				authBackend(acct.getIdToken());
