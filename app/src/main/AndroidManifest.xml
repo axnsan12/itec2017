@@ -35,7 +35,11 @@
 
 		<activity
 			android:name=".MapsActivity"
-			android:label="@string/title_activity_maps">
+			android:label="@string/title_activity_maps"
+			android:parentActivityName=".TodayActivity">
+			<meta-data
+				android:name="android.support.PARENT_ACTIVITY"
+				android:value="tm.itec.routemyway.TodayActivity" />
 		</activity>
 		<activity
 			android:name=".LoginActivity"
@@ -54,8 +58,8 @@
         <activity
             android:name=".SpeedInfoActivity"
             android:label="@string/title_activity_speed_info"
-            android:parentActivityName=".TodayActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".TodayActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="tm.itec.routemyway.TodayActivity" />

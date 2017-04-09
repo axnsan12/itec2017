@@ -2,7 +2,9 @@ package tm.itec.routemyway;
 
 import android.app.Service;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -30,6 +32,9 @@ import tm.itec.routemyway.model.LocationModel;
 import tm.itec.routemyway.network.BackendService;
 import tm.itec.routemyway.network.ResponseCallback;
 import tm.itec.routemyway.network.SaveLocationsRequest;
+
+import static tm.itec.routemyway.LoginActivity.KEY_BACKEND_TOKEN;
+import static tm.itec.routemyway.LoginActivity.KEY_USER_ID;
 
 
 public class LocationRecorderService extends Service {
@@ -86,10 +91,12 @@ public class LocationRecorderService extends Service {
 			dbValues.put(LocationsTable.KEY_WHEN, LocationsTable.DATETIME_FORMAT.format(mLocationUpdateTime));
 			getContentResolver().insert(LocationContentProvider.CONTENT_URI, dbValues);
 
-			String token = "e05368d61dc171fde4d9339b2b979e454defd3413cc43ccf0993d879c69b98ec4e5e0fba75d8c63f";
+			SharedPreferences sharedPrefs = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+			String token = sharedPrefs.getString(KEY_BACKEND_TOKEN, null);
+			int userId = sharedPrefs.getInt(KEY_USER_ID, -1);
 			LocationModel model = new LocationModel(location.getLatitude(), location.getLongitude(), mLocationUpdateTime);
 			SaveLocationsRequest saveLocationsRequest = new SaveLocationsRequest(token, Collections.singleton(model));
-			Call<ResponseBody> response = mBackendService.saveLocations(1, saveLocationsRequest);
+			Call<ResponseBody> response = mBackendService.saveLocations(userId, saveLocationsRequest);
 			response.enqueue(new ResponseCallback<ResponseBody>() {
 				@Override
 				public void onSuccess(Response<ResponseBody> response) {
@@ -128,7 +135,7 @@ public class LocationRecorderService extends Service {
 
 		mLocationRequest = buildLocationRequest();
 		Retrofit retrofit = new Retrofit.Builder()
-				.baseUrl("http://192.168.1.131:5000/")
+				.baseUrl("http://192.168.43.197:5000/")
 				.addConverterFactory(GsonConverterFactory.create())
 				.build();
 

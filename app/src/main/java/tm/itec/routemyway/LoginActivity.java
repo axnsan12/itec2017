@@ -43,8 +43,10 @@ import tm.itec.routemyway.network.ResponseCallback;
 
 public class LoginActivity extends AppCompatActivity {
 	private static final String TAG = "LoginActivity";
-	private static final String KEY_GOOGLE_ID_TOKEN = "googleIdToken";
-	private static final String KEY_BACKEND_TOKEN = "backendToken";
+
+	public static final String KEY_GOOGLE_ID_TOKEN = "googleIdToken";
+	public static final String KEY_BACKEND_TOKEN = "backendToken";
+	public static final String KEY_USER_ID = "userId";
 
 	private GoogleApiClient mGoogleApiClient;
 	private SharedPreferences mSharedPrefs;
@@ -119,6 +121,7 @@ public class LoginActivity extends AppCompatActivity {
 
 	private void checkLocationSettings() {
 		mGoogleApiClient.connect();
+		onLocationReady();
 	}
 
 	private void onLocationReady() {
@@ -172,7 +175,7 @@ public class LoginActivity extends AppCompatActivity {
 		});
 
 		Retrofit retrofit = new Retrofit.Builder()
-				.baseUrl("http://192.168.1.131:5000/")
+				.baseUrl("http://192.168.43.197:5000/")
 				.addConverterFactory(GsonConverterFactory.create())
 				.build();
 
@@ -261,6 +264,7 @@ public class LoginActivity extends AppCompatActivity {
 
 				SharedPreferences.Editor editor = mSharedPrefs.edit();
 				editor.putString(KEY_BACKEND_TOKEN, response.body().token);
+				editor.putInt(KEY_USER_ID, response.body().user.id);
 				editor.apply();
 
 				mLoggedIn = true;

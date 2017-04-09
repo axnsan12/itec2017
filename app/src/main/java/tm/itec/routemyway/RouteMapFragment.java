@@ -22,7 +22,10 @@ import com.google.android.gms.maps.model.JointType;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.android.gms.maps.model.RoundCap;
+import com.google.android.gms.maps.model.TileOverlay;
 import com.google.android.gms.maps.model.TileOverlayOptions;
 import com.google.maps.android.heatmaps.HeatmapTileProvider;
 import com.google.maps.android.heatmaps.WeightedLatLng;
@@ -32,6 +35,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import tm.itec.routemyway.db.LocationContentProvider;
 import tm.itec.routemyway.db.LocationsTable;
@@ -90,6 +94,10 @@ public class RouteMapFragment extends SupportMapFragment implements OnMapReadyCa
 		mLocationUpdater.startQuery(++mLocationUpdateToken, QUERY_LAST_LOCATION, LocationContentProvider.LAST_LOCATION_URI, null, null, null, null);
 	}
 
+	private void refreshMapDrawing() {
+		mLocationUpdater.startQuery(0, QUERY_ALL_LOCATIONS, LocationContentProvider.CONTENT_URI, null, null, null, null);
+	}
+
 	private void updatePosition(double lat, double lng) {
 		if (mMap == null) {
 			return;
@@ -105,15 +113,22 @@ public class RouteMapFragment extends SupportMapFragment implements OnMapReadyCa
 		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mPositionMarker.getPosition(), 16));
 	}
 
-	private void drawHeatmap(Collection<WeightedLatLng> weightedPositions) {
+
+	private TileOverlay drawHeatmap(Collection<WeightedLatLng> weightedPositions) {
 		if (mMap == null || weightedPositions.size() == 0) {
-			return;
+			return null;
 		}
 		HeatmapTileProvider provider = new HeatmapTileProvider.Builder().weightedData(weightedPositions).radius(50).build();
-		mMap.addTileOverlay(new TileOverlayOptions().tileProvider(provider));
+		return mMap.addTileOverlay(new TileOverlayOptions().tileProvider(provider));
 	}
 
-	private void drawStationaryHeatmap(Collection<LocationModel> locations) {
+	private TileOverlay mStationaryHeatmap;
+
+	private TileOverlay drawStationaryHeatmap(Collection<LocationModel> locations) {
+		if (mStationaryHeatmap != null) {
+			mStationaryHeatmap.remove();
+		}
+
 		ArrayList<WeightedLatLng> weightedPositions = new ArrayList<>();
 		LocationModel prev = null;
 		for (LocationModel loc : locations) {
@@ -127,29 +142,59 @@ public class RouteMapFragment extends SupportMapFragment implements OnMapReadyCa
 			prev = loc;
 		}
 
-		drawHeatmap(weightedPositions);
+		return mStationaryHeatmap = drawHeatmap(weightedPositions);
 	}
 
-	private void drawPolyline(Collection<LocationModel> locations) {
+
+	private Polyline mPolyline;
+
+	private Polyline drawPolyline(Collection<LocationModel> locations, int color) {
 		if (mMap == null || locations.size() < 2) {
-			return;
+			return null;
 		}
 
-		PolylineOptions polyline = new PolylineOptions().width(5).color(Color.RED);
+		if (mPolyline == null) {
+
+			PolylineOptions polyline = new PolylineOptions().width(5).color(color).geodesic(true)
+					.startCap(new RoundCap()).endCap(new RoundCap()).jointType(JointType.ROUND);
+			mPolyline = mMap.addPolyline(polyline);
+
+		}
+
 		ArrayList<LatLng> latLngs = new ArrayList<>(locations.size());
 		for (LocationModel loc : locations) {
 			latLngs.add(loc.latLng());
 		}
-		polyline.addAll(latLngs);
-		polyline.jointType(JointType.ROUND);
-		mMap.addPolyline(polyline);
+		mPolyline.setPoints(latLngs);
+		return mPolyline;
+	}
+
+	private void drawRoutes(List<LocationModel> locations) {
+		int colors[] = new int[] { Color.RED, Color.GREEN, Color.YELLOW, Color.BLUE, Color.CYAN, Color.MAGENTA, Color.BLACK };
+		int routeCount = 0;
+		int routeStartIdx = 0;
+		for (int i = 0;  i < locations.size() - 1; ++i) {
+			if (!RouteUtils.sameRoute(locations.get(i), locations.get(i + 1)) || i == locations.size() - 2) {
+				int routeEndIdx = i + 1;
+				if (routeEndIdx - routeStartIdx > 3) {
+					drawPolyline(locations.subList(routeStartIdx, routeEndIdx), colors[routeCount % colors.length]);
+					routeCount += 1;
+				}
+
+				routeStartIdx = routeEndIdx;
+			}
+		}
+
+
+
+		Log.i(TAG, "Drew " + routeCount + " routes");
 	}
 
 
 	@Override
 	public void onMapReady(GoogleMap googleMap) {
 		mMap = googleMap;
-		mLocationUpdater.startQuery(0, QUERY_ALL_LOCATIONS, LocationContentProvider.CONTENT_URI, null, null, null, null);
+		refreshMapDrawing();
 	}
 
 	private static class LocationQueryHandler extends AsyncQueryHandler
@@ -174,6 +219,7 @@ public class RouteMapFragment extends SupportMapFragment implements OnMapReadyCa
 						double lng = cursor.getDouble(cursor.getColumnIndex(LocationsTable.KEY_LNG));
 						int id = cursor.getInt(cursor.getColumnIndex(LocationsTable.KEY_ID));
 						fragment.updatePosition(lat, lng);
+						fragment.refreshMapDrawing();
 						Log.i(TAG, "location ID " + id);
 						fragment.mLastDisplayedToken = token;
 					}
@@ -195,14 +241,16 @@ public class RouteMapFragment extends SupportMapFragment implements OnMapReadyCa
 					}
 
 					LocationModel next = new LocationModel(lat, lng, when);
-					if (prev == null || !RouteUtils.shouldSkip(prev, next)) {
-						locations.add(next);
-						prev = next;
-					}
+//					if (prev == null || !RouteUtils.shouldSkip(prev, next)) {
+//						locations.add(next);
+//						prev = next;
+//					}
+					locations.add(next);
+					prev = next;
 				}
 				Log.i(TAG, "Read " + locations.size() + " locatiosn from db");
 				fragment.drawStationaryHeatmap(locations);
-				fragment.drawPolyline(locations);
+				fragment.drawRoutes(locations);
 			}
 		}
 	}

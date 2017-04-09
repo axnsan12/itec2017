@@ -28,4 +28,13 @@ public class RouteUtils {
 		boolean close = distance < 20; // meters
 		return verySlow || close;
 	}
+
+	public static boolean sameRoute(LocationModel current, LocationModel next) {
+		long elapsedSeconds = next.when - current.when;
+		if (elapsedSeconds < 0) {
+			throw new IllegalArgumentException("locations out of order");
+		}
+
+		return elapsedSeconds < 180;
+	}
 }

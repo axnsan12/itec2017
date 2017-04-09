@@ -1,9 +1,9 @@
 package tm.itec.routemyway;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 
-public class MapsActivity extends FragmentActivity {
+public class MapsActivity extends AppCompatActivity {
 	public static final String TAG = "MapsActivity";
 
 	@Override

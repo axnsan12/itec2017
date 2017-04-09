@@ -16,13 +16,15 @@ public class TodayActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         View speedInfoButton = findViewById(R.id.btnSpeedInfo);
-        speedInfoButton.setOnClickListener(new View.OnClickListener() {
+        View.OnClickListener openMap = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(TodayActivity.this, SpeedInfoActivity.class);
                 startActivity(intent);
             }
-        });
+        };
+        speedInfoButton.setOnClickListener(openMap);
+        findViewById(R.id.mapContainer).setOnClickListener(openMap);
 
         View positionInfoButton = findViewById(R.id.btnPosInfo);
         positionInfoButton.setOnClickListener(new View.OnClickListener() {
